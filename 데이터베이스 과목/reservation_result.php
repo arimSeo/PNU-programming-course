@@ -1,8 +1,6 @@
 <?php
 
-//movieDB �����ͺ��̽� ����
-$conn=mysqli_connect("localhost", "arimy981002 ", "bestgirl9!", "arimy981002 ") or die("movieDB ���� ���� !!");
-// $conn=mysqli_connect("localhost", "201827559", "likelion98", "201827559") or die("movieDB ���� ���� !!");
+$conn=mysqli_connect("서버이름", "계정", "비번", "db이름") or die("movieDB 연결안됨!!");
 
 $movie_id= $_POST["movie_id"];
 $r_name = $_POST["r_name"];

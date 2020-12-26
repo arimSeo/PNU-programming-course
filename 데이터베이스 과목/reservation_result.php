@@ -12,12 +12,12 @@ $r_count = $_POST["r_count"];
         $result= mysqli_query($conn, $sql);
         
         if($result) {
-            echo "<script>alert( '".$r_name." �� ������ �Ϸ� �Ǿ����ϴ�');</script>"; 
+            echo "<script>alert( '".$r_name." 님 예약완료되었습니다');</script>"; 
         }
 
 
 		else {       
-		    echo "<script>alert('������� �ʾҽ��ϴ�.');</script>";
+		    echo "<script>alert('예약 안됨.');</script>";
 		}
 
 mysqli_close($conn);

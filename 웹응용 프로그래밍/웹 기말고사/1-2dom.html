@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-2번 dom</title>
+</head>
+<html>
+
+<body>
+    <h1>1-2번 dom</h1>
+
+    <p id="demo"></p>
+
+    <script>
+        var xhttp, xmlDoc, txt, x, i;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                xmlDoc = this.responseXML;
+                txt = "" + "</br>";
+                x = xmlDoc.getElementsByTagName("catalog");
+                for (i = 0; i < x.length; i++) {
+                    txt = txt + x[i].childNodes[0].nodeValue + "</br>";
+                }
+            }
+            document.getElementById("demo").innerHTML = this.responseText;
+        };
+        xhttp.open("GET", "1-1.xml", true);
+        xhttp.send();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test 2</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left" style="width: 33%">
+
+        </div>
+        <div class="go" style="width: 33%;">
+
+        </div>
+        <div class="right" style="width:33%">
+
+        </div>
+    </div>
+    <script>
+        var left = document.querySelector(".left");
+        var go = document.querySelector(".go");
+        var right = document.querySelector(".right");
+
+        window.onload = function () {
+            gosignal()
+            othersignal()
+        }
+        function gosignal() {
+            go.innerHTML = '<img src="green.JPG">';
+            setTimeout(() => {
+                var repeat = setInterval(() => {
+                    if (go.innerHTML == "") {
+                        go.innerHTML = "<img src='yellow.JPG'>"
+                    }
+                    else {
+                        go.innerHTML = ""
+                    }
+                }, 500);
+                setTimeout(() => {
+                    clearInterval(repeat);
+                    go.innerHTML = "<img src='red.JPG'>"
+                }, 5000)
+
+            }, 20000)
+        }
+        function othersignal() {
+            setTimeout(() => {
+                left.innerHTML = "<img src='leftgreen.JPG'>"
+                right.innerHTML = ""
+                var repeat = setInterval(() => {
+                    if (right.innerHTML == "") {
+                        right.innerHTML = "<img src='rightyellow.JPG'>"
+                    } else {
+                        right.innerHTML = ""
+                    }
+                }, 500)
+
+                setTimeout(() => {
+                    clearInterval(repeat);
+                    left.innerHTML = ""
+                    var repeat2 = setInterval(() => {
+
+                        if (left.innerHTML == "") {
+                            left.innerHTML = "<img src='leftyellow.JPG'>"
+                        } else {
+                            left.innerHTML = ""
+                        }
+                    }, 500);
+                    setTimeout(() => {
+                        clearInterval(repeat2);
+                    }, 5000);
+
+                }, 10000);
+            }, 25000);
+        }
+
+    </script>
+
+</body>
+
+</html>

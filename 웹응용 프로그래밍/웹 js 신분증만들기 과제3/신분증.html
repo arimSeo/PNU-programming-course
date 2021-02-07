@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신분증 만들기</title>
+    <link rel="stylesheet" href="신분증.css" />
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            <img id="image" />
+            <ul>
+                <li class="info">
+                    <span>이름</span> &nbsp; | <span id="name"></span>
+                </li>
+                <li class="info">
+                    <span>학번</span> &nbsp; | <span id="stud_id"></span>
+                </li>
+                <li class="info">
+                    <span>생일</span> &nbsp; | <span id="hbd"></span>
+                </li>
+                <li class="info">
+                    <span>혈액형</span>| &nbsp;<span id="blood"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="info2">
+            <h2><span id="school"></span></h2>
+            <span id="address"></span> <br /><br />
+        </div>
+    </div>
+
+    <button onClick="id_input()">입력하기 버튼</button>
+    <script>
+        function id_input() {
+            document.getElementById("image").src = "arim.PNG";
+
+            const sign = window.prompt("이름을 입력하세요 ");
+            document.querySelector("#name").innerHTML = sign;
+            const std_id = window.prompt("학번을 입력하세요");
+            document.querySelector("#stud_id").innerHTML = std_id;
+            const hbd = window.prompt("생일을 입력하세요");
+            document.querySelector("#hbd").innerHTML = hbd;
+            const blood = window.prompt("혈액형을 입력하세요");
+            document.querySelector("#blood").innerHTML = blood;
+            const school = window.prompt("학교를 입력하세요.");
+            document.querySelector("#school").innerHTML = school;
+            const address = window.prompt("학교주소를 입력하세요.");
+            document.querySelector("#address").innerHTML = address;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test 3번</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <form id="myForm" method="POST" action="">
+        <p><label class="fixed" for="name">Name:</label>
+            <input type="text" id="name" placeholder="enter name">
+        </p>
+        <p><label class="fixed" for="email">E-mail:</label>
+            <input type="email" id="email" placeholder="enter email">
+        </p>
+        <p><label>click here if you like this site
+                <input type="checkbox" id="like"></label>
+        </p>
+        <p><label for="comments">Any comments?</label>
+        </p><input type="text" id="comments" placeholder="enter comments here">
+
+        <p><input id="submit" type="submit" value="submit">
+            <input id="reset" type="reset" value="reset">
+        </p>
+        <input id="j" type="button" value="json 보기 click">
+    </form>
+
+    <p id="helpText"></p>
+    <table id="excelDataTable" border="1">
+    </table>
+
+
+    <script type="text/javascript">
+        document.getElementById("j").onclick = function () {
+            var nameee = document.getElementById('name').value;
+            var emailll = document.getElementById('email').value;
+            var emailll = document.getElementById('like').value;
+            var comm = document.getElementById('comments').value;
+
+            var object = [{ 'name': nameee, 'email': emailll, 'comments': comm }];
+            sessionStorage.setItem('object', JSON.stringify(object));
+            var result = sessionStorage.getItem('object');
+            console.log(JSON.parse(result));
+
+            // document.getElementById("helpText").innerHTML = "<table>" + "이름: " + object.name + "<br/>" + " 이메일: " + object.email + "<br/>" + "comment: " + object.comments;
+            //
+            $(document).ready(function buildHtmlTable() {
+                var columns = addAllColumnHeaders(object);
+
+                for (var i = 0; i < object.length; i++) {
+                    var row$ = $('<tr/>');
+                    for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+                        var cellValue = object[i][columns[colIndex]];
+
+                        if (cellValue == null) { cellValue = ""; }
+
+                        row$.append($('<td/>').html(cellValue));
+                    }
+                    $("#excelDataTable").append(row$);
+                }
+            });
+
+            function addAllColumnHeaders(object) {
+                var columnSet = [];
+                var headerTr$ = $('<tr/>');
+
+                for (var i = 0; i < object.length; i++) {
+                    var rowHash = object[i];
+                    for (var key in rowHash) {
+                        if ($.inArray(key, columnSet) == -1) {
+                            columnSet.push(key);
+                            headerTr$.append($('<th/>').html(key));
+                        }
+                    }
+                }
+                $("#excelDataTable").append(headerTr$);
+
+                return columnSet;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
